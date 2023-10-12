@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap-5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/allcss.css">
+    <script src="../bootstrap-5/js/bootstrap.min.js"></script>
+    <title>DFA Game - Hard mode</title>
+</head>
+
+<body style="background-color: #FF8080;">
+    <div class="popup" id="success">
+        <div class="popup-content-success" id="s">
+            <div class="imgbox">
+                <img src="../img/checked.png" alt="" class="box-img">
+            </div>
+            <div class="title-popup">
+                <h2> Correct!!</h2>
+            </div>
+            <p class="para">Nice one!! Now you have become a master of DFA</p>
+            <a href="../dfa_game.html" class="btn btn-primary text-center btn-popup-s" role="button">Home</a>
+            <div> 
+
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="error">
+        <div class="popup-content-error" id="e">
+            <div class="imgbox">
+                <img src="../img/cancel.png" alt="" class="box-img">
+            </div>
+            <div class="title-popup">
+                <h2> Incorrect!!</h2>
+            </div>
+            <p class="para">Don't worry. let try again</p>
+            <button onclick="closepopup()" class="btn btn-primary text-center btn-popup-e" role="button" id="close-popup">Try again</button>
+            <div> 
+
+            </div>
+        </div>
+    </div>
+   
+    <div class="title">
+        <h1>Hard mode 3</h1>
+    </div>
+
+    <div class="container incontent">
+
+        <label for="input">input state: </label>    
+        <input type="number" id="inputStringH3" min="0" max="1" style="width: 25%;">
+        <button onclick="checkStringH3()">check</button>
+        
+        
+        <br>
+        <br>
+        <div class="row">
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input form-img" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="true">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      <img src="../img_dfa/hard/3/hard3-1.png" class="sty-img">
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input form-img" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="false">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      <img src="../img_dfa/hard/3/hard3-2.png" class="sty-img">
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input form-img" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="false">
+                    <label class="form-check-label" for="flexRadioDefault3">
+                      <img src="../img_dfa/hard/3/hard3-3.png" class="sty-img">
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input form-img" type="radio" name="flexRadioDefault" id="flexRadioDefault4" value="false">
+                    <label class="form-check-label" for="flexRadioDefault4">
+                      <img src="../img_dfa/hard/3/hard3-4.png" class="sty-img">
+                    </label>
+                </div>
+                  
+            </div>
+            <div class="col">
+                <p class="log">Accepted/Rejected</p>
+                <div class="log-border">
+                    <div class="row">
+                        <div class="col">
+                            <p id="acceptedStrings"></p>
+                        </div>
+                        <div class="col">
+                            <p id="resultH3"></p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container btn-last">
+            <div class="row justify-content-center">
+                <div class="col">
+                    <a href="../dfa_game.html" class="btn btn-warning btn-type text-center" role="button">Home</a>
+                </div>
+                <div class="col">
+                    <button id="checkButton" class="btn btn-success btn-type text-center">check</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+          <span class="text-muted">Copyright &copy;  2022, คิดไม่ออกแล้วบอกอ๋อ Group </span>
+          <a href="https://github.com/bnwDunk/DFA-game" target="_blank" class="text-muted"><span><img src="./img/github.png"height="30px">  source code</span></a>
+        </div>
+    </footer>
+    <script src="../dfa_game_script/scriptH3.js"></script>
+   
+
+</body>
+
+</html>

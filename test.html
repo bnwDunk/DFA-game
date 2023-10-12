@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DFA Game</title>
+    <style>
+        /* Add some basic styling here */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #acceptedStrings{
+            display: inline-block;
+            /* text-align: left; */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>DFA Game</h1>
+    <p>Enter a string with an even number of '0's and '1's:</p>
+    <input type="text" id="inputString">
+    <button onclick="checkString()">Check</button>
+    <p id="result"></p>
+    <h2>Accepted Strings</h2>
+    <ul id="acceptedStrings"></ul>
+
+    <script>
+        let acceptedStrings = [];
+
+        // Define the DFA transition function
+        function transition(state, symbol) {
+            if (state === 'q0' && symbol === '0') return 'q1';
+            if (state === 'q0' && symbol === '1') return 'q2';
+            if (state === 'q1' && symbol === '0') return 'q0';
+            if (state === 'q1' && symbol === '1') return 'q3';
+            if (state === 'q2' && symbol === '0') return 'q3';
+            if (state === 'q2' && symbol === '1') return 'q0';
+            if (state === 'q3' && symbol === '0') return 'q2';
+            if (state === 'q3' && symbol === '1') return 'q1';
+            return state; // Stay in the current state for other symbols
+        }
+
+        // Check if a string is accepted by the DFA
+        function checkString() {
+            const inputString = document.getElementById('inputString').value;
+            let currentState = 'q0';
+            console.log(typeof(inputString));
+            for (let i = 0; i < inputString.length; i++) {
+                currentState = transition(currentState, inputString[i]);
+            }
+
+            if (currentState === 'q0') {
+                document.getElementById('result').textContent = 'Accepted';
+                document.getElementById('result').style.color = '#03fc20';
+                acceptedStrings.push(inputString);
+                updateAcceptedStrings();
+            } else {
+                document.getElementById('result').textContent = 'Rejected';
+                document.getElementById('result').style.color = '#f2112b';
+            }
+        }
+
+        // Update the list of accepted strings
+        function updateAcceptedStrings() {
+            const acceptedStringsList = document.getElementById('acceptedStrings');
+            acceptedStringsList.innerHTML = '';
+
+            for ( str of acceptedStrings) {
+                if (str == ''){str='λ'}
+                const listItem = document.createElement('li');
+                listItem.textContent = str;
+                acceptedStringsList.appendChild(listItem);
+            }
+        }
+    </script>
+</body>
+</html>
