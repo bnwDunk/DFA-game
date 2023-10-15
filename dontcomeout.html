@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หอนักศึกษาเฮี้ยนย่านลาดกระบัง</title>
+
+    <style>
+
+        body,html{
+            text-align: center;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        #flexContainer{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            min-height: 100%;
+            height: auto !important;
+            background-image: url("./img/bg.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden; 
+        }
+
+        #txtQuiz{ 
+            /* width: 1000px;  */
+            width: 65%;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        @media only screen and (max-width: 1200px){
+            #txtQuiz{
+                width: 90%;
+            }
+
+       
+        }
+        #txtQuiz p {
+            text-align: justify;
+            text-indent: 50px;
+            padding-left: 30px;
+            padding-right: 30px;
+            color: rgb(231, 10, 10);
+            font-family: 'Noto Serif Thai', serif;
+            font-size: 20px;
+            
+        }
+        #selectBtn{
+            display: flex;
+            justify-content: center;
+        }
+        #btn0{ margin-right: 5px;  }
+        #btn1{ margin-left: 5px; }
+
+        button{
+            min-width: 120px;
+            max-width: 400px;
+            width: 100%;
+            padding: 15px;
+            background-color: rgb(6, 6, 6);
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            color:rgb(255, 255, 255);
+            text-wrap: wrap;
+        }
+        button:hover{
+            opacity: 0.8;
+            box-shadow: 1px 1px 10px #bdbdbd;
+        }
+        
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); 
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: rgb(9, 9, 9);
+            color: rgb(231, 10, 10);
+            margin: 1% auto; /* 15% from the top and centered */
+            padding: 50px;
+            border: 4px solid #ffffff;
+            width: 50%; /* Could be more or less, depending on screen size */
+            text-align: justify;
+            font-family: 'Noto Serif Thai', serif;
+            font-size: 18px;
+        }
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,.close:focus {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+        }
+        .topic {
+            text-indent: 50px;
+        }
+
+        @keyframes shake {
+        10%, 90% {
+          transform: translate3d(-12px, 0, 0);
+        }
+        
+        20%, 80% {
+          transform: translate3d(13px, 0, 0);
+        }
+
+        30%, 50%, 70% {
+          transform: translate3d(-20px, 0, 0);
+        }
+
+        40%, 60% {
+          transform: translate3d(20px, 0, 0);
+        }
+     }
+
+    </style>
+    
+    <!-- import font google Noto Serif Thai Regular 400 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="flexContainer">
+        <div id="rule"></div>
+        <div id="txtQuiz">
+            <p id="quizDetail"></p>
+            <div id="selectBtn">
+                <button id="btn0" type="button" onclick="q0()"></button>
+                <button id="btn1" type="button" onclick="q1()"></button>
+            </div>
+         </div>  
+
+         <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="pModal">
+                <h2>กฎของหอพักนักศึกษา</h2><br>
+                กรุณาปฏิบัติตามอย่างเคร่งครัด<br>
+                <br><div class="topic">1. โปรดอย่าออกจากห้องในเวลา 23.00 - 04.00 เด็ดขาด เพราะมีการรายงานมาว่าจะได้ยินเสียงรองเท้า
+                ส้นสูงเดินตามมาในช่วงเวลาที่แจ้งไว้ หากท่านพบเจอกับเหตุการณ์ดังกล่าว โปรดตั้งสติ อย่าวิ่งเด็ดขาด แล้วเดิน
+                เข้าห้องตัวเองหรือลงไปที่ล็อบบี้ของหอพัก แล้วจากนั้นเสียงจะหายไปเอง</div>
+                <br><div class="topic">2. ทางเดินบันไดชั้นสอง จะมีรูปภาพของหญิงสาวเจ้าของที่ดินเก่าแขวนอยู่คู่กับกระจกบานหนึ่ง หากท่าน
+                เดินผ่านตรงนั้นแล้วเห็นหญิงสาวในรูปปรากฎในกระจก อย่าตกใจไป ให้ท่านพูดไปว่า “ วันนี้ท่านหญิงก็ยังสวย
+                เหมือนเดิมเลยนะ ครับ / ค่ะ ” แล้วเดี๋ยวเธอจะหายไปเอง</div>
+                <br><div class="topic">3. หากมีเสียงเคาะประตูในยามวิกาล ขอให้สอดส่องดูให้แน่ในว่าที่หน้าห้องของท่านมีคนอยู่จริง ๆ หากไม่
+                มีคนอยู่ห้ามเปิดประตูเด็ดขาด แต่ถ้าหากท่านเผลอเปิดประตูไปแล้ว เราขอแสดงความเสียใจด้วย เราไม่สามารถ
+                ช่วยอะไรท่านได้แล้ว</div>
+                <br><div class="topic">4. ในคืนวันศุกร์ ท่านไม่ควรมีเตียงที่ยังว่างในห้องพัก ท่านสามารถชวนเพื่อนจากภายนอกหอพักเข้ามา
+                นอนกับท่านได้ในคืนวันศุกร์ แต่หากท่านไม่สามารถหาเพื่อนมานอนด้วยได้จริง ๆ เราขอแนะนำให้ท่านไปนอนที่ห้องพิเศษสำหรับคืนวันศุกร์ที่อยู่ที่ชั้นล็อบบี้ของหอพัก ถึงแม้ห้องนั้นจะไม่สะอาดเท่าไหร่และบรรยากาศน่ากลัว 
+                แต่เชื่อเถอะ มันปลอดภัยกว่าห้องของท่านอย่างแน่นอน (เราไม่แนะนำให้ท่านใช้วิธีการไปนอนหอเพื่อน เพราะเมื่อท่านกลับมาที่ห้องของท่าน ห้องนั้นอาจจะไม่ใช่ของท่านอีกต่อไปแล้ว)</div>
+                <br><div class="topic">5. ท่านไม่ควรใช้เวลาอยู่ในหอพักติดต่อกันเป็นเวลานานมากจนเกินไป ควรออกมาใช้ชีวิตที่โลกภายนอกบ้าง ไม่อย่างนั้นอาจจะทำให้ท่านเริ่มมีสัมผัสที่หกได้</div>
+                <br><div class="topic">6. หากมีคนมาเคาะประตูห้องของท่านแล้วขอเข้าไปทำความสะอาด เปิดให้เธอเข้ามาได้ เธอคือแม่บ้าน 
+                เธอจะช่วยกำจัดสิ่งไม่ดีทุกอย่างในห้องท่านออกไปเอง (เราขอแจ้งไว้ก่อนว่า ท่านไม่สามารถมองเห็นแม่บ้านผ่านตา
+                แมวได้ แต่โปรดวางใจ เธอไม่ทำอันตรายต่อท่านแน่นอน)</div>
+                <br>สุดท้ายนี้ขอให้จำกฎให้ดีและปฏิบัติตามอย่างเคร่งครัดที่สุด ขอบคุณทุกท่านที่ใช้บริการ
+                </p>
+            </div>
+        </div>  
+        <audio id="bgSound" src=""></audio>
+        <audio id="bgSoundEffect" src=""></audio>
+        <audio id="bgSoundEffect2" src=""></audio>
+    </div>
+    
+    
+    <script src="ghost.js">    </script>
+</body>
+</html>

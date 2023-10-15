@@ -64,7 +64,7 @@ function updateAcceptedStrings() {
 }
 
 document.getElementById('checkButton').addEventListener('click', function () {
-    var trueRadio = document.querySelector('input[type="radio"][value="1"]:checked');
+    var trueRadio = document.querySelector('input[type="radio"][value="3"]:checked');
 
     if (trueRadio) {
         document.getElementById('s').style.display = "block";

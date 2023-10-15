@@ -12,9 +12,27 @@
 </head>
 
 <body>
-    
+    <div class="popup" id="warring">
+        <div class="popup-content-warring" id="e">
+            <div class="imgbox">
+                <img src="./img/waring.png" alt="" class="box-img">
+            </div>
+            <div class="title-popup">
+                <h2>คำเตือน!!</h2>
+            </div>
+            <p class="para">เกมนี้ มีฉาก Jump Scare และเสียงที่น่าตกใจ
+                แนะนำให้ผู้เล่นใช้วิจารณญาณในการเล่น
+                โดยเฉพาะผู้ที่มีอาการแพนิค 
+                หรือ ผู้ที่เป็นโรคหัวใจ และ ผู้สูงอายุ <br>เมื่อเข้าไปในเกมแล้ว 
+            </p>
+            <p class="para-red">ให้ผู้เล่นอ่านกฏภายในเกมอย่างอย่างเคร่งครัดให้ครบทุกข้อ</p>
+            <p class="para">และขอให้ผู้เล่นทุกคนโชคดี</p>
 
-
+            <a href="./dontcomeout.html" class="btn btn-primary text-center btn-popup-e" role="button" id="close-popup">play</a>
+            
+            
+        </div>
+    </div>
 
 
     <div class="title">
@@ -25,7 +43,7 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-2">
             <div class="col">
               <div class="card shadow-sm">
-                <img src="./img/dfa-page.png" alt="" srcset="">
+                <img src="./img/dfa-page.png" alt="" srcset="" height="345px" width="100%">
                 <div class="card-body">
                   <p class="card-text">DFA Game เกมฝึกทักษะการคิดและการแก้ปัญหาของ DFA </p>
                   <div class="d-flex justify-content-between align-items-center">
@@ -39,13 +57,13 @@
             </div>
             <div class="col">
                 <div class="card shadow-sm">
-                  <img src="./img/dfa-page.png" alt="" srcset="">
+                  <img src="./img/bg_game.jpg" alt="" srcset="" height="345px" width="100%">
                   <div class="card-body">
-                    <p class="card-text">เกมผีหลอก วิญญาณหลอน</p>
+                    <p class="card-text">เกมหอนักศึกษาเฮี้ยนย่านลาดกระบัง</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-outline-dark btn-type text-center" role="button">Play</a>
-                        <p><----   ลองกดดูสิ</p>
+                        <button onclick="warningpopup()" class="btn btn-outline-dark btn-type text-center" role="button" id="play-btn">Play</button>
+                        
                       </div>
                     </div>
                   </div>
@@ -60,6 +78,23 @@
           <a href="https://github.com/bnwDunk/DFA-game" target="_blank" class="text-muted"><span><img src="./img/github.png"height="30px">  source code</span></a>
         </div>
     </footer>
+
+
+    <script>
+        function warningpopup() {
+            var waring = document.getElementById("warring");
+            if (waring.style.display === "none") {
+                waring.style.display = "block";
+            } else {
+            waring.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == waring) {
+                    waring.style.display = "none";
+                }
+            }
+        }
+    </script>
 
 </body>
 

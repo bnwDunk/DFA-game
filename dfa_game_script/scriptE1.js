@@ -75,7 +75,7 @@ function setImageOrder(order) {
     var images = document.querySelectorAll(".form-check-input.form-img");
     for (var i = 0; i < images.length; i++) {
         var imageIndex = order[i] - 1;
-        images[i].parentNode.querySelector("img").src = "../img_dfa/easy/1/easy1-" + imageOrder[imageIndex] + ".png";
+        images[i].parentNode.querySelector("img").src = "../img_dfa/easy/1/easy1-" + imageOrder[imageIndex] + ".jpg";
         images[i].value = imageOrder[imageIndex];
     }
 }

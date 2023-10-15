@@ -1,11 +1,10 @@
-
 function transitionE2(state, symbol) {
     if (state === 'q0' && symbol === '0') return 'q0';
     if (state === 'q0' && symbol === '1') return 'qt';
     if (state === 'q1' && symbol === '0') return 'q0';
     if (state === 'q1' && symbol === '1') return 'qt';
     
-    if (state === 'qt' && symbol === 'o') return 'q1';
+    if (state === 'qt' && symbol === '0') return 'q1';
     if (state === 'qt' && symbol === '1') return 'qt';
 
     return state; // Stay in the current state for other symbols
@@ -14,6 +13,7 @@ function transitionE2(state, symbol) {
 
 function checkStringE2() {
     const inputString = document.getElementById('inputStringE2').value;  // id ของ input type=text == inputStringE2
+
     let currentState = 'q0';
 
     for (let i = 0; i < inputString.length; i++) {
@@ -76,7 +76,7 @@ function setImageOrder(order) {
     var images = document.querySelectorAll(".form-check-input.form-img");
     for (var i = 0; i < images.length; i++) {
         var imageIndex = order[i] - 1;
-        images[i].parentNode.querySelector("img").src = "../img_dfa/easy/2/easy2-" + imageOrder[imageIndex] + ".png";
+        images[i].parentNode.querySelector("img").src = "../img_dfa/easy/2/easy2-" + imageOrder[imageIndex] + ".jpg";
         images[i].value = imageOrder[imageIndex];
     }
 }

@@ -1,4 +1,3 @@
-
 function transitionE3(state, symbol) {
     if (state === 'q0' && symbol === '0') return 'q1';
     if (state === 'q0' && symbol === '1') return 'q3';
@@ -6,7 +5,7 @@ function transitionE3(state, symbol) {
     if (state === 'q1' && symbol === '1') return 'q3';
     if (state === 'q2' && symbol === '0') return 'q2';
     if (state === 'q2' && symbol === '1') return 'qt';
-    if (state === 'q3' && symbol === '0') return 'q0';
+    if (state === 'q3' && symbol === '0') return 'q1';
     if (state === 'q3' && symbol === '1') return 'q3';
     
     if (state === 'qt' && symbol === 'o') return 'qt';
@@ -80,7 +79,7 @@ function setImageOrder(order) {
     var images = document.querySelectorAll(".form-check-input.form-img");
     for (var i = 0; i < images.length; i++) {
         var imageIndex = order[i] - 1;
-        images[i].parentNode.querySelector("img").src = "../img_dfa/easy/3/easy3-" + imageOrder[imageIndex] + ".png";
+        images[i].parentNode.querySelector("img").src = "../img_dfa/easy/3/easy3-" + imageOrder[imageIndex] + ".jpg";
         images[i].value = imageOrder[imageIndex];
     }
 }
