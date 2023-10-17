@@ -1,3 +1,4 @@
+
 function transitionM1(state, symbol) {
     if (state === 'q0' && symbol === '0') return 'q1';
     if (state === 'q0' && symbol === '1') return 'qt';
@@ -7,7 +8,7 @@ function transitionM1(state, symbol) {
     if (state === 'q2' && symbol === '1') return 'q1';
    
     
-    if (state === 'qt' && symbol === 'o') return 'qt';
+    if (state === 'qt' && symbol === '0') return 'qt';
     if (state === 'qt' && symbol === '1') return 'qt';
 
     return state; // Stay in the current state for other symbols
@@ -24,7 +25,7 @@ function checkStringM1() {
          }
          else{
              currentState = transitionM1(currentState, inputString[i]);
-             check = true
+        
          }
     }
 

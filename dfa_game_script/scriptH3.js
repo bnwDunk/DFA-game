@@ -24,7 +24,7 @@ function transitionH3(state, symbol) {
     if (state === 'q10' && symbol === '1') return 'qt';
     if (state === 'q11' && symbol === '0') return 'q9';
     if (state === 'q11' && symbol === '1') return 'q10';
-    if (state === 'qt' && symbol === 'o') return 'qt';
+    if (state === 'qt' && symbol === '0') return 'qt';
     if (state === 'qt' && symbol === '1') return 'qt';
 
     return state; // Stay in the current state for other symbols
@@ -42,7 +42,6 @@ function checkStringH3() {
          }
          else{
              currentState = transitionH3(currentState, inputString[i]);
-             check = true
          }
     }
 

@@ -1,3 +1,4 @@
+
 function transitionH2(state, symbol) {
     if (state === 'q0' && symbol === '0') return 'q1';
     if (state === 'q0' && symbol === '1') return 'q2';
@@ -11,7 +12,7 @@ function transitionH2(state, symbol) {
     if (state === 'q4' && symbol === '1') return 'qt';
     if (state === 'q5' && symbol === '0') return 'q5';
     if (state === 'q5' && symbol === '1') return 'qt';
-    if (state === 'qt' && symbol === 'o') return 'qt';
+    if (state === 'qt' && symbol === '0') return 'qt';
     if (state === 'qt' && symbol === '1') return 'qt';
 
     return state; // Stay in the current state for other symbols
@@ -29,7 +30,6 @@ function checkStringH2() {
          }
          else{
              currentState = transitionH2(currentState, inputString[i]);
-             check = true
          }
     }
 
@@ -43,7 +43,6 @@ function checkStringH2() {
         document.getElementById('resultH2').style.color = '#f2112b';
     }
 }
-
 
 let acceptedStrings = [];
 function updateAcceptedStrings() {

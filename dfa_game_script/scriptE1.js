@@ -1,10 +1,11 @@
+
 function transitionE1(state, symbol) {
     if (state === 'q0' && symbol === '0') return 'q0';
     if (state === 'q0' && symbol === '1') return 'q1';
     if (state === 'q1' && symbol === '0') return 'q0';
     if (state === 'q1' && symbol === '1') return 'qt';
     
-    if (state === 'qt' && symbol === 'o') return 'qt';
+    if (state === 'qt' && symbol === '0') return 'qt';
     if (state === 'qt' && symbol === '1') return 'qt';
 
     return state; // Stay in the current state for other symbols
@@ -22,7 +23,7 @@ function checkStringE1() {
          }
          else{
              currentState = transitionE1(currentState, inputString[i]);
-             check = true
+            
          }
     }
 

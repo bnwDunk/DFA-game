@@ -1,3 +1,4 @@
+
 function transitionM3(state, symbol) {
     if (state === 'q0' && symbol === '0') return 'qt';
     if (state === 'q0' && symbol === '1') return 'q1';
@@ -9,7 +10,7 @@ function transitionM3(state, symbol) {
     if (state === 'q3' && symbol === '1') return 'qt';
    
     
-    if (state === 'qt' && symbol === 'o') return 'qt';
+    if (state === 'qt' && symbol === '0') return 'qt';
     if (state === 'qt' && symbol === '1') return 'qt';
 
     return state; // Stay in the current state for other symbols
@@ -27,7 +28,6 @@ function checkStringM3() {
          }
          else{
              currentState = transitionM3(currentState, inputString[i]);
-             check = true
          }
     }
 

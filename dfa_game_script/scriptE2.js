@@ -1,10 +1,11 @@
+
 function transitionE2(state, symbol) {
     if (state === 'q0' && symbol === '0') return 'q0';
     if (state === 'q0' && symbol === '1') return 'qt';
     if (state === 'q1' && symbol === '0') return 'q0';
     if (state === 'q1' && symbol === '1') return 'qt';
     
-    if (state === 'qt' && symbol === 'o') return 'q1';
+    if (state === 'qt' && symbol === '0') return 'q1';
     if (state === 'qt' && symbol === '1') return 'qt';
 
     return state; // Stay in the current state for other symbols
@@ -22,7 +23,7 @@ function checkStringE2() {
          }
          else{
              currentState = transitionE2(currentState, inputString[i]);
-             check = true
+            
          }
     }
 
@@ -36,6 +37,7 @@ function checkStringE2() {
         document.getElementById('resultE2').style.color = '#f2112b';
     }
 }
+
 
 let acceptedStrings = [];
 function updateAcceptedStrings() {

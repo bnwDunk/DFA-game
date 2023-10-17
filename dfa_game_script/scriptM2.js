@@ -1,3 +1,4 @@
+
 function transitionM2(state, symbol) {
     if (state === 'q0' && symbol === '0') return 'q3';
     if (state === 'q0' && symbol === '1') return 'q1';
@@ -9,7 +10,7 @@ function transitionM2(state, symbol) {
     if (state === 'q3' && symbol === '1') return 'q1';
    
     
-    if (state === 'qt' && symbol === 'o') return 'qt';
+    if (state === 'qt' && symbol === '0') return 'qt';
     if (state === 'qt' && symbol === '1') return 'qt';
 
     return state; // Stay in the current state for other symbols
@@ -27,7 +28,7 @@ function checkStringM2() {
          }
          else{
              currentState = transitionM2(currentState, inputString[i]);
-             check = true
+        
          }
     }
 
@@ -41,7 +42,6 @@ function checkStringM2() {
         document.getElementById('resultM2').style.color = '#f2112b';
     }
 }
-
 
 let acceptedStrings = [];
 function updateAcceptedStrings() {

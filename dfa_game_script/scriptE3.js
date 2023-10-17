@@ -1,3 +1,4 @@
+
 function transitionE3(state, symbol) {
     if (state === 'q0' && symbol === '0') return 'q1';
     if (state === 'q0' && symbol === '1') return 'q3';
@@ -5,10 +6,10 @@ function transitionE3(state, symbol) {
     if (state === 'q1' && symbol === '1') return 'q3';
     if (state === 'q2' && symbol === '0') return 'q2';
     if (state === 'q2' && symbol === '1') return 'qt';
-    if (state === 'q3' && symbol === '0') return 'q0';
+    if (state === 'q3' && symbol === '0') return 'q1';
     if (state === 'q3' && symbol === '1') return 'q3';
     
-    if (state === 'qt' && symbol === 'o') return 'qt';
+    if (state === 'qt' && symbol === '0') return 'qt';
     if (state === 'qt' && symbol === '1') return 'qt';
 
     return state; // Stay in the current state for other symbols
@@ -26,7 +27,6 @@ function checkStringE3() {
          }
          else{
              currentState = transitionE3(currentState, inputString[i]);
-             check = true
          }
     }
 
@@ -40,6 +40,7 @@ function checkStringE3() {
         document.getElementById('resultE3').style.color = '#f2112b';
     }
 }
+
 
 let acceptedStrings = [];
 function updateAcceptedStrings() {
