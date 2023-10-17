@@ -34,9 +34,16 @@ function transitionH3(state, symbol) {
 function checkStringH3() {
     const inputString = document.getElementById('inputStringH3').value;  // id ของ input type=text == inputStringH3
     let currentState = 'q0';
+    let check = true
 
     for (let i = 0; i < inputString.length; i++) {
-        currentState = transitionH3(currentState, inputString[i]);
+        if (inputString[i] !== '0' && inputString[i] !== '1') {
+            check = false
+         }
+         else{
+             currentState = transitionH3(currentState, inputString[i]);
+             check = true
+         }
     }
 
     if (currentState === 'q11' ) {

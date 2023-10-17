@@ -5,7 +5,7 @@ function transitionE3(state, symbol) {
     if (state === 'q1' && symbol === '1') return 'q3';
     if (state === 'q2' && symbol === '0') return 'q2';
     if (state === 'q2' && symbol === '1') return 'qt';
-    if (state === 'q3' && symbol === '0') return 'q1';
+    if (state === 'q3' && symbol === '0') return 'q0';
     if (state === 'q3' && symbol === '1') return 'q3';
     
     if (state === 'qt' && symbol === 'o') return 'qt';
@@ -18,12 +18,19 @@ function transitionE3(state, symbol) {
 function checkStringE3() {
     const inputString = document.getElementById('inputStringE3').value;  // id ของ input type=text == inputStringE3
     let currentState = 'q0';
+    let check = true 
 
     for (let i = 0; i < inputString.length; i++) {
-        currentState = transitionE3(currentState, inputString[i]);
+        if (inputString[i] !== '0' && inputString[i] !== '1') {
+            check = false
+         }
+         else{
+             currentState = transitionE3(currentState, inputString[i]);
+             check = true
+         }
     }
 
-    if (currentState === 'q0' || currentState === 'q1' || currentState === 'q2' || currentState === 'q3'  ) {
+    if ((currentState === 'q0' || currentState === 'q1' || currentState === 'q2' || currentState === 'q3'  )&& check === true) {
         document.getElementById('resultE3').textContent = 'Accepted '; // id ของคำตอบ == resultE3
         document.getElementById('resultE3').style.color = '#03fc20';
         acceptedStrings.push(inputString);

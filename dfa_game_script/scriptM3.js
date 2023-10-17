@@ -1,4 +1,3 @@
-
 function transitionM3(state, symbol) {
     if (state === 'q0' && symbol === '0') return 'qt';
     if (state === 'q0' && symbol === '1') return 'q1';
@@ -10,7 +9,7 @@ function transitionM3(state, symbol) {
     if (state === 'q3' && symbol === '1') return 'qt';
    
     
-    if (state === 'qt' && symbol === '0') return 'qt';
+    if (state === 'qt' && symbol === 'o') return 'qt';
     if (state === 'qt' && symbol === '1') return 'qt';
 
     return state; // Stay in the current state for other symbols
@@ -20,12 +19,19 @@ function transitionM3(state, symbol) {
 function checkStringM3() {
     const inputString = document.getElementById('inputStringM3').value;  // id ของ input type=text == inputStringM3
     let currentState = 'q0';
+    let check = true
 
     for (let i = 0; i < inputString.length; i++) {
-        currentState = transitionM3(currentState, inputString[i]);
+        if (inputString[i] !== '0' && inputString[i] !== '1') {
+            check = false
+         }
+         else{
+             currentState = transitionM3(currentState, inputString[i]);
+             check = true
+         }
     }
 
-    if (currentState === 'q3' ) {
+    if ((currentState === 'q3' )&& check === true) {
         document.getElementById('resultM3').textContent = 'Accepted '; // id ของคำตอบ == resultM3
         document.getElementById('resultM3').style.color = '#03fc20';
         acceptedStrings.push(inputString);

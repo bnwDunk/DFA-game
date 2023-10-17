@@ -4,7 +4,7 @@ function transitionE2(state, symbol) {
     if (state === 'q1' && symbol === '0') return 'q0';
     if (state === 'q1' && symbol === '1') return 'qt';
     
-    if (state === 'qt' && symbol === '0') return 'q1';
+    if (state === 'qt' && symbol === 'o') return 'q1';
     if (state === 'qt' && symbol === '1') return 'qt';
 
     return state; // Stay in the current state for other symbols
@@ -13,14 +13,20 @@ function transitionE2(state, symbol) {
 
 function checkStringE2() {
     const inputString = document.getElementById('inputStringE2').value;  // id ของ input type=text == inputStringE2
-
     let currentState = 'q0';
+    let check = true
 
     for (let i = 0; i < inputString.length; i++) {
-        currentState = transitionE2(currentState, inputString[i]);
+        if (inputString[i] !== '0' && inputString[i] !== '1') {
+            check = false
+         }
+         else{
+             currentState = transitionE2(currentState, inputString[i]);
+             check = true
+         }
     }
 
-    if (currentState === 'qt' ) {
+    if ((currentState === 'qt' ) && check === true){
         document.getElementById('resultE2').textContent = 'Accepted '; // id ของคำตอบ == resultE2
         document.getElementById('resultE2').style.color = '#03fc20';
         acceptedStrings.push(inputString);

@@ -18,12 +18,19 @@ function transitionH1(state, symbol) {
 function checkStringH1() {
     const inputString = document.getElementById('inputStringH1').value; // id ของ input type=text == inputStringH1
     let currentState = 'q0';
+    let check = true
 
     for (let i = 0; i < inputString.length; i++) {
-        currentState = transitionH1(currentState, inputString[i]);
+        if (inputString[i] !== '0' && inputString[i] !== '1') {
+            check = false
+         }
+         else{
+             currentState = transitionH1(currentState, inputString[i]);
+             check = true
+         }
     }
 
-    if (currentState === 'q0' || currentState === 'q1' || currentState === 'q2') {
+    if ((currentState === 'q0' || currentState === 'q1' || currentState === 'q2')&& check===true) {
         document.getElementById('resultH1').textContent = 'Accepted ';   // id ของคำตอบ == resultH1
         document.getElementById('resultH1').style.color = '#03fc20';
         acceptedStrings.push(inputString);
@@ -33,6 +40,7 @@ function checkStringH1() {
         document.getElementById('resultH1').style.color = '#f2112b';
     }
 }
+
 
 let acceptedStrings = [];
 function updateAcceptedStrings() {

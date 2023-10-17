@@ -1,4 +1,3 @@
-
 function transitionM1(state, symbol) {
     if (state === 'q0' && symbol === '0') return 'q1';
     if (state === 'q0' && symbol === '1') return 'qt';
@@ -18,12 +17,18 @@ function transitionM1(state, symbol) {
 function checkStringM1() {
     const inputString = document.getElementById('inputStringM1').value;  // id ของ input type=text == inputStringM1
     let currentState = 'q0';
-
+    let check = true
     for (let i = 0; i < inputString.length; i++) {
-        currentState = transitionM1(currentState, inputString[i]);
+        if (inputString[i] !== '0' && inputString[i] !== '1') {
+            check = false
+         }
+         else{
+             currentState = transitionM1(currentState, inputString[i]);
+             check = true
+         }
     }
 
-    if (currentState === 'q2' ) {
+    if ((currentState === 'q2' )&& check === true) {
         document.getElementById('resultM1').textContent = 'Accepted '; // id ของคำตอบ == resultM1
         document.getElementById('resultM1').style.color = '#03fc20';
         acceptedStrings.push(inputString);

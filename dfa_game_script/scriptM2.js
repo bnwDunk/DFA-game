@@ -1,4 +1,3 @@
-
 function transitionM2(state, symbol) {
     if (state === 'q0' && symbol === '0') return 'q3';
     if (state === 'q0' && symbol === '1') return 'q1';
@@ -20,12 +19,19 @@ function transitionM2(state, symbol) {
 function checkStringM2() {
     const inputString = document.getElementById('inputStringM2').value;  // id ของ input type=text == inputStringM2
     let currentState = 'q0';
+    let check = true
 
     for (let i = 0; i < inputString.length; i++) {
-        currentState = transitionM2(currentState, inputString[i]);
+        if (inputString[i] !== '0' && inputString[i] !== '1') {
+            check = false
+         }
+         else{
+             currentState = transitionM2(currentState, inputString[i]);
+             check = true
+         }
     }
 
-    if (currentState === 'q2' || currentState === 'q3' ) {
+    if ((currentState === 'q2' || currentState === 'q3' )&& check === true) {
         document.getElementById('resultM2').textContent = 'Accepted '; // id ของคำตอบ == resultM2
         document.getElementById('resultM2').style.color = '#03fc20';
         acceptedStrings.push(inputString);
@@ -35,6 +41,7 @@ function checkStringM2() {
         document.getElementById('resultM2').style.color = '#f2112b';
     }
 }
+
 
 let acceptedStrings = [];
 function updateAcceptedStrings() {

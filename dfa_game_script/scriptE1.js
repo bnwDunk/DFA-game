@@ -14,12 +14,19 @@ function transitionE1(state, symbol) {
 function checkStringE1() {
     const inputString = document.getElementById('inputStringE1').value;  // id ของ input type=text == inputStringE1
     let currentState = 'q0';
+    let check = true
 
     for (let i = 0; i < inputString.length; i++) {
-        currentState = transitionE1(currentState, inputString[i]);
+        if (inputString[i] !== '0' && inputString[i] !== '1') {
+            check = false
+         }
+         else{
+             currentState = transitionE1(currentState, inputString[i]);
+             check = true
+         }
     }
 
-    if (currentState === 'q0' || currentState === 'q1' ) {
+    if ((currentState === 'q0' || currentState === 'q1' )&&check === true ){
         document.getElementById('resultE1').textContent = 'Accepted '; // id ของคำตอบ == resultE1
         document.getElementById('resultE1').style.color = '#03fc20';
         acceptedStrings.push(inputString);

@@ -19,7 +19,7 @@ const quiz = {
     q17 : "ตอนส่องที่ตาแมวคุณไม่เห็นใครแต่คุณก็นึกขึ้นได้ว่าพนักงานทำความสะอาดที่นี่ไม่สามารถมองเห็นผ่านตาแมวได้ คุณจึง...",
     q18 : "ระหว่างทางเดิน คุณได้ยินเสียงเหมือนคนใส่รองเท้าส้นสูงเดินตามคุณมาอย่างรวดเร็วพร้อมเสียงกรี้ด คุณจึง...",
     q19 : "คุณคิดถูกแล้วล่ะ ที่นี่มีแต่แม่บ้าน ไม่มีพ่อบ้านสักหน่อย หลังจากนั้นคุณจึง...",
-    q20 : "คุณทำได้ดีมาก การตัดสินใจของุณสามารถรอดผ่านคืนนี้ไปได้อย่างปลอดภัย ยินดีด้วยที่รอดมาได้อีกหนึ่งคืน"
+    q20 : "คุณทำได้ดีมาก การตัดสินใจของคุณสามารถรอดผ่านคืนนี้ไปได้อย่างปลอดภัย ยินดีด้วยที่รอดมาได้อีกหนึ่งคืน"
     };
     const Btn0 = {
     q0 : "ปฏิเสธ และกลับห้องเพื่อพักผ่อน",
@@ -82,7 +82,7 @@ const quiz = {
         q11 : "./img/bg11.jpg",
         q12 : "./img/bg12.jpg",
         q13 : "./img/bg13.jpg",
-        q14 : "./img/jumpscare.jpg",
+        q14 : "./img/jumpscare2.jpeg",
         q15 : "./img/bg15.jpg",
         q16 : "./img/bg16.jpg",
         q17 : "./img/bg17.jpg",
@@ -218,10 +218,12 @@ const quiz = {
         btn1.innerHTML = Btn1[n] 
         efAudio(soundEFsrc[n])
         bgAudio(soundBGsrc[n])
+        document.getElementById("btnHome").style.display = "none";
         if(n=="q14" || n=="q20"){
             btn0.style.display = "none"   
             btn1.style.display = "none"
             quizDetail.style.textAlign = "center"
+            document.getElementById("btnHome").style.display = "block";
         }      
         if(n=="q14"){
             jumpscareShake();
@@ -240,6 +242,9 @@ const quiz = {
     function q1(){
         logSceneArr.push(1)
         endSceneCheck(logSceneArr)     
+    }
+    function returnHome(){
+        window.open("index.html","_self");
     }
 
     function showrule(){
